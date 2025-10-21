@@ -49,5 +49,7 @@ public class TypeErasureUnbounded {
 
         Field fieldNext = clazz.getDeclaredField("next");
         System.out.println("'next' field type: " + fieldNext.getType().getCanonicalName());
+        System.out.println("'next' field bound: "
+                + fieldNext.getType().getTypeParameters()[0].getBounds()[0].getTypeName());
     }
 }
