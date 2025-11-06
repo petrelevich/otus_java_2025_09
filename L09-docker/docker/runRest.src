@@ -3,7 +3,7 @@ docker stats
 ------
 docker run --rm --name rest-service \
 --network="host" \
-registry.gitlab.com/petrelevich/dockerregistry/rest-hello:5.0.0
+spvdocker/otus-demo
 
 --------------------------
 docker run --rm --name rest-service \
@@ -11,7 +11,7 @@ docker run --rm --name rest-service \
 --cpus 2 \
 --network="host" \
 -e JAVA_TOOL_OPTIONS="-Xms350m -Xmx350m -XX:+UseSerialGC" \
-registry.gitlab.com/petrelevich/dockerregistry/rest-hello:5.0.0
+spvdocker/otus-demo
 
 --------------------------
 
@@ -24,13 +24,13 @@ docker run --rm --name rest-service \
 --cpus 2 \
 --network="host" \
 -e JAVA_TOOL_OPTIONS="-Xms350m -Xmx350m -XX:+UseSerialGC" \
-registry.gitlab.com/petrelevich/dockerregistry/rest-hello:5.0.0
+spvdocker/otus-demo
 
 --------------------------
 docker run --rm --name rest-service \
 --memory=256m \
 --cpus 2 \
 --network="host" \
--e JAVA_TOOL_OPTIONS="-XX:InitialRAMPercentage=80 -XX:MaxRAMPercentage=80 -XX:+UseSerialGC" \
-registry.gitlab.com/petrelevich/dockerregistry/rest-hello:5.0.0
+-e JAVA_TOOL_OPTIONS="-XX:InitialRAMPercentage=80.0 -XX:MaxRAMPercentage=80.0 -XX:+UseSerialGC" \
+spvdocker/otus-demo
 

@@ -17,6 +17,7 @@ public class Application {
         logger.info("TotalMemorySize, mb:{}", os.getTotalMemorySize() / 1024 / 1024);
         logger.info("maxMemory, mb:{}", Runtime.getRuntime().maxMemory() / 1024 / 1024);
         logger.info("freeMemory, mb:{}", Runtime.getRuntime().freeMemory() / 1024 / 1024);
+        logger.info("totalMemory, mb:{}", Runtime.getRuntime().totalMemory() / 1024 / 1024);
 
         new SpringApplicationBuilder().sources(Application.class).run(args);
     }

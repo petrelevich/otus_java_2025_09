@@ -30,11 +30,15 @@ jib {
     }
 
     to {
-        image = "registry.gitlab.com/petrelevich/dockerregistry/rest-hello"
+        // Для повторения демо - изменить image на свой приватный репозиторий докер-образов
+        image = "spvdocker/otus-demo" // hub.docker.com
+        // Пример GitLab:
+        // image = "registry.gitlab.com/petrelevich/dockerregistry/rest-hello"
         tags = setOf(project.version.toString())
         auth {
-            username = System.getenv("GITLAB_USERNAME")
-            password = System.getenv("GITLAB_PASSWORD")
+            // DOCKER_USERNAME, DOCKER_PASSWORD - переменные окружения
+            username = System.getenv("DOCKER_USERNAME")
+            password = System.getenv("DOCKER_PASSWORD")
         }
     }
 }
