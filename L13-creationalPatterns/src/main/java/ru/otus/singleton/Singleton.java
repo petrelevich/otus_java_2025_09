@@ -32,7 +32,9 @@ public class Singleton {
 class SingletonDemo {
     private static final Logger logger = LoggerFactory.getLogger(SingletonDemo.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
+        //        var clazz = Class.forName("ru.otus.singleton.Singleton$SingletonHolder");
+
         logger.info("--- begin ---");
         logger.info("- singleton 1");
         Singleton singleton1 = Singleton.getInstance();
