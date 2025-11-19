@@ -9,7 +9,7 @@ public class ConnectionPostgres implements Connection {
     @Override
     public void connect() {
         logger.info("start connect...");
-        sleep(2000);
+        sleep(5000);
         logger.info("connected");
     }
 

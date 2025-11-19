@@ -32,7 +32,9 @@ public class ObjectPool<T> {
 
         T obj = free.poll();
         if (obj == null) {
-            if (used.size() == this.maxSize) throw new ObjectPoolMaxSizeException(maxSize);
+            if (used.size() == this.maxSize) {
+                throw new ObjectPoolMaxSizeException(maxSize);
+            }
 
             obj = objectFactory.create();
             pooledObjectInitializer.accept(obj);
