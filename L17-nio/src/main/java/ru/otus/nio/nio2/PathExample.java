@@ -16,17 +16,24 @@ public class PathExample {
     }
 
     private void go() throws IOException, URISyntaxException {
+        // Получаем URL ресурса из classpath
         var fileUrl = ClassLoader.getSystemResource("share.xml");
         if (fileUrl == null) {
             throw new NoSuchElementException("Resource file share.xml not found");
         }
-        Path shareXml = Paths.get(fileUrl.toURI());
-        logger.info("FileName:{}", shareXml.getFileName());
-        logger.info("FileSystem:{}", shareXml.getFileSystem());
-        logger.info("Parent:{}", shareXml.getParent());
-        logger.info("isAbsolute:{}", shareXml.isAbsolute());
-        logger.info("realPath:{}", shareXml.toRealPath());
 
+        // Path -- это абстракция пути в файловой системе, не привязанная к конкретной ОС.
+        // Заменяет устаревший java.io.File для работы с путями.
+        // Создаём Path из URI ресурса
+        Path shareXml = Paths.get(fileUrl.toURI());
+
+        logger.info("FileName:{}", shareXml.getFileName()); // Только имя файла
+        logger.info("FileSystem:{}", shareXml.getFileSystem()); // Файловая система
+        logger.info("Parent:{}", shareXml.getParent()); // Родительская директория
+        logger.info("isAbsolute:{}", shareXml.isAbsolute()); // Абсолютный или относительный путь
+        logger.info("realPath:{}", shareXml.toRealPath()); // Канонический путь (разрешает симлинки)
+
+        // toRealPath() выбросит IOException, если файл не существует
         var notExists = Paths.get("NotExists.xml");
         try {
             logger.info("realPath: {}", notExists.toRealPath());

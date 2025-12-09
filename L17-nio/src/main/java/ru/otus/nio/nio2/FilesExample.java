@@ -35,7 +35,6 @@ public class FilesExample {
     private void copy() throws IOException, URISyntaxException {
         Files.createDirectory(Paths.get("L17-nio/tmp"));
 
-        // с файлами в ресурсах надо работать как с ресурсами
         var uri = ClassLoader.getSystemResource("share.xml").toURI();
 
         var source = Paths.get(uri);
@@ -46,22 +45,28 @@ public class FilesExample {
 
     private void read() throws IOException {
         var path = Paths.get("L17-nio/data.xml");
+
+        // Размер файла в байтах
         var size = Files.size(path);
         logger.info("\nfile size: {}", size);
 
+        // Читаем все строки файла через Stream API
         logger.info("\ncontentAll:");
-
         try (var stream = Files.lines(path)) {
             stream.forEach(logger::info);
         }
 
+        // Читаем строки с фильтрацией и трансформацией
         logger.info("\nfiltered:");
-
         try (var stream = Files.lines(path)) {
             stream.filter(line -> line.contains("share"))
                     .map(String::toUpperCase)
                     .forEach(logger::info);
         }
+
+        // Читаем весь файл
+        var content = Files.readString(path);
+        logger.info("readAllLines:\n{}", content);
     }
 
     private void write() throws IOException {
@@ -70,6 +75,8 @@ public class FilesExample {
     }
 
     private void walk() {
+        // Files.walk() - рекурсивный обход директории, возвращает Stream<Path>
+        // Ищем файлы *.java, выводим их соержимое
         try (Stream<Path> paths = Files.walk(Paths.get("L17-nio"))) {
             var fileNames = paths.filter(Files::isRegularFile)
                     .filter(path -> path.getFileName().toString().contains(".java"))

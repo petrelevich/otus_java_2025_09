@@ -15,6 +15,8 @@ public class CopyFiles {
                 var channelDest =
                         FileChannel.open(Path.of(destFile), StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
 
+            // transferTo() -- эффективное копирование через DMA (Direct Memory Access),
+            // данные передаются напрямую между файловыми дескрипторами на уровне ОС
             channelSrc.transferTo(0, channelSrc.size(), channelDest);
         }
     }
