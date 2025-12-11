@@ -75,12 +75,12 @@ class PoolVsSingleConnectionTest {
     void makeConnectionPool() {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(postgresqlContainer.getJdbcUrl());
-        config.setConnectionTimeout(3000); // ms
-        config.setIdleTimeout(60000); // ms
-        config.setMaxLifetime(600000); // ms
+        config.setConnectionTimeout(3000); // мсек, максимальное время ожидания соединения из пула
+        config.setIdleTimeout(60000); // мсек, соединение закрывается, если не используется дольше этого времени
+        config.setMaxLifetime(600000); // мсек, максимальное время жизни соединения
         config.setAutoCommit(false);
-        config.setMinimumIdle(5);
-        config.setMaximumPoolSize(10);
+        config.setMinimumIdle(5); // минимальное количество простаивающих (готовых) соединений
+        config.setMaximumPoolSize(10); // максимальный размер пула
         config.setPoolName("DemoHiPool");
         config.setRegisterMbeans(true);
 
@@ -89,6 +89,9 @@ class PoolVsSingleConnectionTest {
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+        // cachePrepStmts - кеширование PreparedStatement на уровне драйвера
+        // prepStmtCacheSize - макс. кол-во PreparedStatement в кеше на одно соединение
+        // prepStmtCacheSqlLimit - максимальная длина SQL-запроса (в символах), который будет кешироваться
 
         dataSourcePool = new HikariDataSource(config);
     }

@@ -6,7 +6,7 @@ import java.util.Optional;
 import ru.otus.core.repository.DataTemplate;
 import ru.otus.core.repository.executor.DbExecutor;
 
-/** Сохратяет объект в базу, читает объект из базы */
+/** Сохраняет объект в базу, читает объект из базы */
 @SuppressWarnings("java:S1068")
 public class DataTemplateJdbc<T> implements DataTemplate<T> {
 
