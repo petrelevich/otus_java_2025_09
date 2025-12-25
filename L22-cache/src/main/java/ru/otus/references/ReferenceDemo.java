@@ -87,7 +87,6 @@ public class ReferenceDemo {
 
         // как видим объект благополучно удален
         logger.info("immortal_2:{}", immortal);
-        ////
 
         var immortalReal = new Immortal(true);
         logger.info("immortal next:{}", immortalReal);

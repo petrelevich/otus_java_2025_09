@@ -18,8 +18,8 @@ public class WeakMapDemo {
         Map<String, Integer> cache = new WeakHashMap<>();
         var limit = 100;
 
-        var d = "key:21"; // для для демонстрации intern
-        var d2 = "key:22"; // для для демонстрации intern
+        var d = "key:21"; // для демонстрации intern
+        var d2 = "key:22"; // для демонстрации intern
         for (var idx = 0; idx < limit; idx++) {
             // var key = ("key:" + idx).intern(); // останутся значения для "key:21" и "key:22"
             var key = "key:" + idx; // при таком подходе значение удалится.
