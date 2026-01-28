@@ -16,6 +16,7 @@ import ru.otus.listener.Listener;
 import ru.otus.model.Message;
 import ru.otus.processor.Processor;
 
+@SuppressWarnings("java:S1611")
 class ComplexProcessorTest {
 
     @Test
@@ -32,7 +33,7 @@ class ComplexProcessorTest {
 
         var processors = List.of(processor1, processor2);
 
-        var complexProcessor = new ComplexProcessor(processors, (ex) -> {});
+        var complexProcessor = new ComplexProcessor(processors, ex -> {});
 
         // when
         var result = complexProcessor.handle(message);

@@ -3,6 +3,7 @@ package ru.outs.observer;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+@SuppressWarnings({"java:S125", "java:S1450"})
 class EventProducer {
 
     private String data = "";

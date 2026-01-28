@@ -3,7 +3,7 @@ package ru.otus.decorator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@SuppressWarnings("java:S125")
+@SuppressWarnings({"java:S125", "java:S1130"})
 public class Demo {
     private static final Logger logger = LoggerFactory.getLogger(Demo.class);
 

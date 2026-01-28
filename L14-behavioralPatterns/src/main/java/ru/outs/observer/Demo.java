@@ -3,6 +3,7 @@ package ru.outs.observer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@SuppressWarnings("java:S125")
 public class Demo {
     private static final Logger logger = LoggerFactory.getLogger(Demo.class);
 

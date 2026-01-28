@@ -3,7 +3,7 @@ package ru.outs.visitor;
 import java.util.Arrays;
 import java.util.List;
 
-@SuppressWarnings("java:S125")
+@SuppressWarnings({"java:S125", "java:S1854", "java:S108", "java:S1871", "java:S1481"})
 public class Demo {
     public static void main(String[] args) {
 

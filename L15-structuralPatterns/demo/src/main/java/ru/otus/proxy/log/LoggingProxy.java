@@ -9,6 +9,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@SuppressWarnings({"java:S2201", "java:S1181", "java:S2629", "java:S2139"})
 class LoggingHandler implements InvocationHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(LoggingHandler.class);
@@ -21,11 +22,11 @@ class LoggingHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        logger.info("Invoke method: " + method.getName() + ": " + Arrays.toString(args));
+        logger.info("Invoke method: {} : {}", method.getName(), Arrays.toString(args));
 
         try {
             var res = method.invoke(subject, args);
-            logger.info("method result: " + res);
+            logger.info("method result: {}", res);
             return res;
         } catch (Throwable e) {
             logger.error("Exception:", e);
@@ -33,12 +34,13 @@ class LoggingHandler implements InvocationHandler {
         }
     }
 
-    public static <T> T wrap(Object subject, Class cls) {
+    public static <T> T wrap(Object subject, Class<?> cls) {
         return (T) Proxy.newProxyInstance(
-                LoggingProxy.class.getClassLoader(), new Class[] {cls}, new LoggingHandler(subject));
+                LoggingProxy.class.getClassLoader(), new Class<?>[] {cls}, new LoggingHandler(subject));
     }
 }
 
+@SuppressWarnings("java:S2201")
 public class LoggingProxy {
     public static void main(String[] args) {
         var map = LoggingHandler.<Map<Integer, String>>wrap(new HashMap<Integer, String>(), Map.class);

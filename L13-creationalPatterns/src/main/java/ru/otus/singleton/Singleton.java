@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /**
  * @author sergey created on 19.09.18.
  */
-@SuppressWarnings({"java:S3457", "java:S2440"})
+@SuppressWarnings({"java:S3457", "java:S2440", "java:S125"})
 public class Singleton {
     private static final Logger logger = LoggerFactory.getLogger(Singleton.class);
 
@@ -28,11 +28,11 @@ public class Singleton {
     }
 }
 
-@SuppressWarnings({"java:S3457"})
+@SuppressWarnings({"java:S3457", "java:S2440", "java:S125"})
 class SingletonDemo {
     private static final Logger logger = LoggerFactory.getLogger(SingletonDemo.class);
 
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) {
         //        var clazz = Class.forName("ru.otus.singleton.Singleton$SingletonHolder");
 
         logger.info("--- begin ---");

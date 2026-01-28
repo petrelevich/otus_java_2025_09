@@ -44,6 +44,8 @@ include("L25-di:homework-template")
 
 include("L26-springBootMvc")
 
+include ("L28-springDataJdbc")
+
 pluginManagement {
     val jgitver: String by settings
     val dependencyManagement: String by settings
